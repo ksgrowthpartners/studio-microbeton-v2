@@ -1,0 +1,305 @@
+/* ============================================================
+   /new — gedeelde basis voor de drie ontwerp-varianten
+   Fonts: --f-serif (Fraunces) · --f-sans (Instrument Sans)
+          --f-mono (Fragment Mono) · --f-syne (Syne)
+          --f-cormorant (Cormorant Garamond)
+   ============================================================ */
+
+.new-root {
+  --hairline-d: rgba(28, 24, 18, 0.16);
+  --hairline-l: rgba(244, 239, 230, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.new-root ::selection {
+  background: #c8742f;
+  color: #faf8f3;
+}
+
+/* ---------- Reveal ---------- */
+.new-root .rv {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.new-root .rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Scrub-hero ---------- */
+.scrub {
+  position: relative;
+}
+
+.scrub-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.scrub-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrub-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scrub-beat {
+  position: absolute;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.scrub-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ---------- Marquee ---------- */
+.mq {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.mq-baan {
+  display: inline-flex;
+  animation: mq-loop 38s linear infinite;
+}
+
+.mq-baan span {
+  display: inline-block;
+  padding-right: 0.5em;
+}
+
+@keyframes mq-loop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-baan {
+    animation: none;
+  }
+}
+
+/* ---------- HoverIndex ---------- */
+.hix {
+  position: relative;
+}
+
+.hix-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: clamp(220px, 24vw, 340px);
+  aspect-ratio: 4 / 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.hix-ghost[data-on] {
+  opacity: 1;
+}
+
+.hix-ghost img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.35s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hix-ghost img[data-show] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hix-row {
+  display: grid;
+  align-items: baseline;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hix-mobiel {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .hix-ghost {
+    display: none;
+  }
+
+  .hix-mobiel {
+    display: block;
+  }
+}
+
+/* ---------- Accordion ---------- */
+.acc-knop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.acc-plus {
+  position: relative;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}
+
+.acc-plus::before,
+.acc-plus::after {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: translateY(-50%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.acc-plus::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.acc-item[data-open] .acc-plus::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.acc-paneel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.acc-paneel p {
+  overflow: hidden;
+}
+
+.acc-item[data-open] .acc-paneel {
+  grid-template-rows: 1fr;
+}
+
+/* ---------- DesignSwitcher ---------- */
+.dsw {
+  position: fixed;
+  right: clamp(14px, 2vw, 26px);
+  bottom: clamp(14px, 2.4vh, 26px);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 6px;
+  border-radius: 999px;
+  background: rgba(18, 15, 11, 0.78);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(244, 239, 230, 0.14);
+  font-family: var(--f-mono), monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f4efe6;
+  white-space: nowrap;
+}
+
+.dsw-label {
+  padding-inline: 10px 8px;
+  opacity: 0.45;
+}
+
+.dsw-link {
+  padding: 7px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.62;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.dsw-link:hover {
+  opacity: 1;
+}
+
+.dsw-link[data-active] {
+  background: #c8742f;
+  color: #16130e;
+  opacity: 1;
+}
+
+.dsw-terug {
+  border-left: 1px solid rgba(244, 239, 230, 0.16);
+  border-radius: 0 999px 999px 0;
+  margin-left: 4px;
+}
+
+@media (max-width: 560px) {
+  .dsw-label {
+    display: none;
+  }
+
+  .dsw {
+    max-width: calc(100vw - 16px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ---------- Toegankelijkheid ---------- */
+.new-root :focus-visible {
+  outline: 2px solid #c8742f;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-root .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

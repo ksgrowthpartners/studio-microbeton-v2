@@ -1,0 +1,5 @@
+Plaats hier de drie videos:
+  movie-1.mp4
+  movie-2.mp4
+  movie-3.mp4
+Zie README.md voor het ffmpeg-optimalisatiecommando.

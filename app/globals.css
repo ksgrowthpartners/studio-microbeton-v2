@@ -1,0 +1,571 @@
+/* ============================================================
+   Studio Microbeton — design tokens
+   Palet komt rechtstreeks uit het materiaal: kalk, zand,
+   greige, beton. Amber alleen als zonsondergang-accent.
+   ============================================================ */
+:root {
+  --beton: #191713;
+  --beton-2: #211e19;
+  --kalk: #f1ece1;
+  --zand: #e4dccc;
+  --greige: #c8bead;
+  --rook: #8d8678;
+  --inkt: #26211a;
+  --wit: #faf8f3;
+  --amber: #c8742f;
+
+  --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --font-body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+  --shell: 1140px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--inkt);
+  background: var(--beton);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.shell {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 48px);
+}
+
+/* ============================================================
+   Hero — scroll-scrub film
+   ============================================================ */
+.hero-wrap {
+  position: relative;
+  height: 420vh; /* scrublengte: ~3,2 schermen scrollen voor de hele film */
+  background: var(--beton);
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--beton);
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 85% at 50% 18%, transparent 42%, rgba(12, 10, 7, 0.38) 100%),
+    linear-gradient(to top, rgba(12, 10, 7, 0.55), transparent 38%);
+}
+
+.beat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 980px);
+  text-align: center;
+  color: var(--wit);
+  opacity: 0;
+  will-change: opacity, transform;
+  text-shadow: 0 1px 24px rgba(10, 9, 7, 0.45);
+}
+
+.beat-logo {
+  width: clamp(180px, 26vw, 300px);
+  margin: 0 auto clamp(18px, 3vh, 32px);
+}
+
+.beat-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
+.beat-sub {
+  margin-top: clamp(12px, 2vh, 20px);
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.82);
+}
+
+.hero-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ============================================================
+   Slab — de "vloerplaat" tussen secties, verwijzing naar de
+   section-cut uit de film
+   ============================================================ */
+.slab {
+  height: 12px;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0) 35%, rgba(255, 255, 255, 0.12) 50%, rgba(0, 0, 0, 0.28)),
+    var(--rook);
+}
+
+/* ============================================================
+   Banden — secties als materiaallagen
+   ============================================================ */
+.band {
+  padding-block: clamp(72px, 12vh, 132px);
+}
+
+.band--kalk {
+  background: var(--kalk);
+  color: var(--inkt);
+}
+
+.band--zand {
+  background: var(--zand);
+  color: var(--inkt);
+}
+
+.band--greige {
+  background: var(--greige);
+  color: var(--inkt);
+}
+
+.band--beton {
+  background: var(--beton-2);
+  color: var(--wit);
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 18px;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+
+.display--xl {
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  max-width: 16ch;
+}
+
+.lede {
+  margin-top: 26px;
+  max-width: 58ch;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: inherit;
+  opacity: 0.88;
+}
+
+/* Werkwijze */
+.steps {
+  margin-top: clamp(40px, 6vh, 64px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.step h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 0.98rem;
+  opacity: 0.82;
+}
+
+.step-num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--amber);
+  border-top: 2px solid currentColor;
+  padding-top: 14px;
+  margin-bottom: 14px;
+}
+
+/* Recent werk */
+.cards {
+  margin-top: clamp(40px, 6vh, 64px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 16px 0 6px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.swatch {
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), inset 0 -18px 36px rgba(0, 0, 0, 0.1);
+}
+
+.sw-1 {
+  background: linear-gradient(132deg, #f0eadd 0%, #ddd3c0 48%, #e7dfcf 76%, #d2c7b0 100%);
+}
+
+.sw-2 {
+  background: linear-gradient(132deg, #e2d8c3 0%, #cfc2a6 52%, #dbd1ba 78%, #c4b699 100%);
+}
+
+.sw-3 {
+  background: linear-gradient(132deg, #3a3833 0%, #2b2925 46%, #34312c 74%, #232019 100%);
+}
+
+.note {
+  margin-top: 28px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  opacity: 0.6;
+}
+
+/* Contact */
+.band--cta .lede {
+  margin-inline: 0;
+}
+
+.cta-row {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 28px;
+  background: var(--kalk);
+  color: var(--inkt);
+  border: 1px solid var(--kalk);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--wit);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--wit);
+  border-color: rgba(250, 248, 243, 0.4);
+}
+
+.btn--ghost:hover {
+  background: transparent;
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* Footer */
+.footer {
+  background: var(--beton);
+  color: rgba(250, 248, 243, 0.66);
+  padding-block: 40px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  width: 132px;
+}
+
+/* Take-switcher */
+.switcher {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(20, 18, 14, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(250, 248, 243, 0.16);
+  border-radius: 999px;
+  color: var(--wit);
+}
+
+.switcher-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-right: 4px;
+}
+
+.switcher-link {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.switcher-link:hover {
+  border-color: rgba(250, 248, 243, 0.4);
+}
+
+.switcher-link.is-active {
+  background: var(--amber);
+  color: var(--wit);
+}
+
+/* Reveal-animatie */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Responsief */
+@media (max-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-wrap {
+    height: 380vh;
+  }
+}
+
+/* Toegankelijkheid */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Vakwerk-sectie — take I (documentary craft) als ambient band
+   tussen hero en SiteContent. Video op de achtergrond, overlay
+   copy. Dezelfde grammatica als de hero maar passief.
+   ============================================================ */
+.vakwerk {
+  position: relative;
+  min-height: 80vh;
+  min-height: 80svh;
+  overflow: hidden;
+  background: var(--beton);
+  color: var(--wit);
+  display: flex;
+  align-items: flex-end;
+}
+
+.vakwerk-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.vakwerk-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(12, 10, 7, 0.85) 0%, rgba(12, 10, 7, 0.5) 38%, rgba(12, 10, 7, 0.18) 72%, rgba(12, 10, 7, 0.45) 100%);
+}
+
+.vakwerk-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: clamp(48px, 9vh, 96px) clamp(20px, 5vw, 48px);
+}
+
+.vakwerk-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 18px;
+}
+
+.vakwerk-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.4vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  max-width: 18ch;
+  text-shadow: 0 1px 24px rgba(10, 9, 7, 0.45);
+}
+
+.vakwerk-lede {
+  margin-top: 24px;
+  max-width: 52ch;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  opacity: 0.92;
+  text-shadow: 0 1px 12px rgba(10, 9, 7, 0.5);
+}
+
+/* ============================================================
+   Switcher — verfijning voor "geen actieve take" (homepage)
+   ============================================================ */
+.switcher {
+  position: fixed;
+  right: clamp(16px, 2vw, 28px);
+  bottom: clamp(16px, 2vh, 28px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(12, 10, 7, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  color: var(--wit);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.switcher-label {
+  opacity: 0.6;
+  padding-right: 4px;
+}
+
+.switcher-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 200ms ease, background 200ms ease;
+}
+
+.switcher-link:hover {
+  opacity: 1;
+}
+
+.switcher-link.is-active {
+  background: var(--amber);
+  color: var(--beton);
+  opacity: 1;
+}
