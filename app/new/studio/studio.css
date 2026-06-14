@@ -873,9 +873,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--carbon-soft);
-  flex: 0 1 auto;
-  min-width: 0;
-  overflow-wrap: anywhere;
+  /* Termen zijn labels — nooit binnen een woord afbreken */
+  flex: 0 0 auto;
 }
 
 .sw-leader-lijn {
@@ -891,7 +890,7 @@
   text-align: right;
   color: var(--carbon);
   font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 /* ---------- Scrub (vakwerk) ---------- */
@@ -1379,6 +1378,31 @@
 
   .sw-plaat-regel {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Dotted-leader past niet op één smalle regel → stapelen:
+     term boven, waarde eronder, geen dotted-lijn. Voorkomt dat
+     labels als WERKGEBIED/SYSTEMEN/GARANTIE/EPOXY middenin breken. */
+  .sw-leader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    padding-block: 11px;
+  }
+
+  .sw-leader-lijn {
+    display: none;
+  }
+
+  .sw-leader-waarde {
+    text-align: left;
+  }
+
+  /* Footer-kolommen onder elkaar zodat o.a. het e-mailadres past */
+  .sw-voet-top {
+    grid-template-columns: 1fr;
   }
 }
 
