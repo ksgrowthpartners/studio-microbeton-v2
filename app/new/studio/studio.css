@@ -1425,6 +1425,11 @@
 }
 
 @media (max-width: 880px) {
+  /* Op mobiel scrubt de film niet (loop) → korter blok, minder scrollen. */
+  .sw-scrub {
+    height: 160vh !important;
+  }
+
   .sw-register-rij {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 32px;

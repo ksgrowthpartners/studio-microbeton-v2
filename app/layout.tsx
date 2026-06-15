@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
+import { GoogleTag } from './GoogleTag';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.studiomicrobeton.nl'),
   title: 'Studio Microbeton — Mortex, microcement & gietvloeren',
   description:
     'Naadloze wanden, vloeren, trappen en meubels in Mortex, microcement en gietvloer. Voor woningen en zakelijke ruimtes.',
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -19,7 +25,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <GoogleTag />
+        {children}
+      </body>
     </html>
   );
 }

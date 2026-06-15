@@ -1,8 +1,108 @@
+import type { Metadata } from 'next';
 import './studio.css';
 import { VIDEOS, MATERIALEN, STUDIO_STATS, MATERIAAL_USPS, STUDIO_QUOTE, CONTACT } from '../content';
 import { Reveal, ScrubHero, AmbientVideo } from '../ui';
 import { MmGauge, TellerRol, PlayOnce } from './bits';
 import { StudioHeader, LogoMark } from './header';
+
+const SITE = 'https://www.studiomicrobeton.nl';
+const SEO_DESCRIPTION =
+  'Naadloze, waterdichte microbeton- & microcementvloeren, -wanden, -trappen en -badkamers. 10+ jaar vakmanschap voor wonen én zakelijk in Nederland, België en Duitsland. Gratis offerte binnen 48 uur.';
+
+export const metadata: Metadata = {
+  title: 'Microbeton & microcement specialist | Studio Microbeton',
+  description: SEO_DESCRIPTION,
+  keywords: [
+    'microbeton',
+    'microcement',
+    'microbetonvloer',
+    'microcementvloer',
+    'microcement badkamer',
+    'betonlook vloer',
+    'betonstuc',
+    'naadloze vloer',
+    'gietvloer',
+    'microbeton specialist',
+    'Eindhoven',
+  ],
+  authors: [{ name: 'Studio Microbeton' }],
+  creator: 'Studio Microbeton',
+  alternates: { canonical: `${SITE}/` },
+  openGraph: {
+    type: 'website',
+    locale: 'nl_NL',
+    siteName: 'Studio Microbeton',
+    url: `${SITE}/`,
+    title: 'Microbeton & microcement specialist | Studio Microbeton',
+    description:
+      'Naadloze, waterdichte microbeton- & microcementoppervlakken met tijdloze uitstraling. 10+ jaar vakmanschap — Nederland, België & Duitsland.',
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Naadloze, voegvrije microbeton badkamer van Studio Microbeton',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Studio Microbeton — microbeton & microcement specialist',
+    description: 'Naadloze, waterdichte microbeton- & microcementoppervlakken. NL · BE · DE.',
+    images: ['/og.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  },
+};
+
+// LocalBusiness structured data — sterk voor lokale SEO + Google Ads kwaliteit.
+const JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  '@id': `${SITE}/#business`,
+  name: 'Studio Microbeton',
+  alternateName: 'Studio Microbeton — microbeton & microcement specialist',
+  url: `${SITE}/`,
+  image: `${SITE}/og.jpg`,
+  logo: `${SITE}/icon.png`,
+  description: SEO_DESCRIPTION,
+  telephone: CONTACT.tel,
+  email: CONTACT.mail,
+  priceRange: '€€€',
+  currenciesAccepted: 'EUR',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: CONTACT.straat,
+    postalCode: CONTACT.postcode,
+    addressLocality: CONTACT.stad,
+    addressCountry: 'NL',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Nederland' },
+    { '@type': 'Country', name: 'België' },
+    { '@type': 'Country', name: 'Duitsland' },
+  ],
+  knowsAbout: [
+    'microbeton',
+    'microcement',
+    'microbetonvloer',
+    'microcementvloer',
+    'naadloze vloeren',
+    'voegvrije badkamers',
+    'betonlook',
+    'gietvloer',
+  ],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microbeton vloeren' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microcement badkamers' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microbeton wanden' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microbeton trappen' } },
+  ],
+  slogan: 'Naadloze oppervlakken met tijdloze uitstraling.',
+};
 
 /**
  * STUDIO — "Signatuur" × "De Laag".
@@ -54,6 +154,7 @@ const STAPPEN = [
 export default function Studio() {
   return (
     <main className="sw">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSONLD) }} />
       <MmGauge />
 
       <div className="sw-inhoud">
@@ -226,7 +327,7 @@ export default function Studio() {
           src={VIDEOS.vakwerk}
           mobileSrc={VIDEOS.vakwerkLoop}
           poster="/images/studio-hero-poster.jpg"
-          height={260}
+          height={200}
           beats={[
             { from: -1, to: 0.3, kop: 'Laag één van drie.', sub: 'Scroll — de film volgt jou' },
             { from: 0.38, to: 0.66, kop: 'Met de hand opgebouwd.' },
@@ -415,6 +516,7 @@ export default function Studio() {
                 <a href="#werk">Werk</a>
                 <a href="#werkwijze">Werkwijze</a>
                 <a href="#gesprek">Contact</a>
+                <a href="/privacy">Privacybeleid</a>
               </nav>
             </div>
 
