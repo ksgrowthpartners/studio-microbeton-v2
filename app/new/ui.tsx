@@ -87,14 +87,23 @@ export function ScrubHero({
       return;
     }
 
+    // Op touch/mobiel werkt currentTime-scrubben niet (iOS rendert geen
+    // frames van een gepauzeerde video). Daar draait de film als gewone
+    // autoplay-loop; de tekst-beats blijven scroll-gestuurd.
+    const isMobile =
+      window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024;
+
     // Gefaseerd laden: de volledige (keyframe-dichte) film pas ophalen
     // zodra de sectie binnen ~3 viewports komt — ruim op tijd gebufferd,
     // maar niet concurrerend met de hero op t=0.
     const lader = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
-          video.preload = 'auto';
-          video.load();
+          // Op mobiel laadt play() de film zelf; load() hier zou die play() afbreken.
+          if (!isMobile) {
+            video.preload = 'auto';
+            video.load();
+          }
           lader.disconnect();
         }
       },
@@ -119,7 +128,7 @@ export function ScrubHero({
       const total = rect.height - window.innerHeight;
       const p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
 
-      if (video.readyState >= 1 && video.duration) {
+      if (!isMobile && video.readyState >= 1 && video.duration) {
         const target = p * Math.max(0, video.duration - 0.05);
         smoothed += (target - smoothed) * 0.16;
         if (Math.abs(video.currentTime - smoothed) > 0.008) {
@@ -146,9 +155,15 @@ export function ScrubHero({
         const zichtbaar = entries.some((e) => e.isIntersecting);
         if (zichtbaar && !actief) {
           actief = true;
+          if (isMobile) {
+            video.loop = true;
+            video.preload = 'auto';
+            video.play().catch(() => {});
+          }
           raf = requestAnimationFrame(tick);
         } else if (!zichtbaar && actief) {
           actief = false;
+          if (isMobile) video.pause();
           cancelAnimationFrame(raf);
         }
       },
@@ -213,7 +228,10 @@ export function AmbientVideo({ src, poster, className = '' }: { src: string; pos
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.pause();
+      return;
+    }
 
     const io = new IntersectionObserver(
       (entries) => {

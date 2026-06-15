@@ -108,7 +108,8 @@ export function TellerRol({
 }
 
 /* ------------------------------------------------------------------ */
-/* PlayOnce — speelt één keer af en blijft op het laatste frame staan  */
+/* HeroVideo — autoplay loop. Declaratieve autoplay (muted+playsInline)  */
+/* is de enige betrouwbare mobiele route; JS-play() is alleen fallback.  */
 /* ------------------------------------------------------------------ */
 export function PlayOnce({ src, poster, className = '' }: { src: string; poster?: string; className?: string }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -117,17 +118,24 @@ export function PlayOnce({ src, poster, className = '' }: { src: string; poster?
     const video = ref.current;
     if (!video) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      try {
-        video.currentTime = Math.max(0, video.duration - 0.05);
-      } catch {
-        /* poster blijft staan */
-      }
+      video.pause();
       return;
     }
     video.play().catch(() => {});
   }, []);
 
   return (
-    <video ref={ref} className={className} src={src} poster={poster} muted playsInline preload="auto" aria-hidden="true" />
+    <video
+      ref={ref}
+      className={className}
+      src={src}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    />
   );
 }
