@@ -1,5 +1,5 @@
 import './studio.css';
-import { VIDEOS, MATERIALEN, STUDIO_STATS, CONTACT } from '../content';
+import { VIDEOS, MATERIALEN, STUDIO_STATS, MATERIAAL_USPS, STUDIO_QUOTE, CONTACT } from '../content';
 import { Reveal, ScrubHero, AmbientVideo } from '../ui';
 import { MmGauge, TellerRol, PlayOnce } from './bits';
 import { StudioHeader, LogoMark } from './header';
@@ -39,9 +39,9 @@ const PROVENANCE = [
 ];
 
 const KENNIS = [
-  ['Gietvloer (PU)', 'naadloos en licht verend — comfort, vloerverwarming-vriendelijk'],
-  ['Microcement & microbeton', '2–3 mm met de hand, op vloer én wand — verfijnder dan echt beton'],
-  ['Epoxy', 'het hardst, chemisch bestendig — het zakelijke werkpaard'],
+  ['Op elke ondergrond', 'Tegels, beton, hout of gips — microbeton hecht op vrijwel iedere stabiele ondergrond, zonder sloopwerk.'],
+  ['Binnen én buiten', 'Van woonkamer tot terras, van badkamer tot zwembad — UV-bestendig en vorstbestendig.'],
+  ['Snel klaar', 'Gemiddeld 3 tot 5 werkdagen. Na 48 uur al voorzichtig beloopbaar.'],
 ];
 
 const STAPPEN = [
@@ -67,16 +67,16 @@ export default function Studio() {
           <div className="sw-hero-shade" aria-hidden="true" />
           <div className="sw-hero-tekst">
             <h1 className="sw-d1">
-              <span className="sw-wipe sw-wipe-1">Geen twee vloeren hetzelfde.</span>
+              <span className="sw-wipe sw-wipe-1">Naadloze oppervlakken,</span>
               <span className="sw-wipe sw-wipe-2">
-                In <em className="sw-swell">vijftien jaar</em> niet.
+                gegoten in <em className="sw-swell">art</em>.
               </span>
             </h1>
             <p className="sw-hero-sub sw-wipe sw-wipe-3">
-              Microbeton, gietvloeren en epoxy — met de hand aangebracht, voor thuis en zakelijk.
+              Dé specialist in microbeton en microcement — voor wonen én zakelijk, in Nederland, België en Duitsland.
             </p>
             <a className="sw-blok-cta sw-blok-cta--vol sw-wipe sw-wipe-3" href="#gesprek">
-              Plan een adviesgesprek
+              Gratis offerte aanvragen
             </a>
           </div>
           <div className="sw-naad sw-naad--hero" aria-hidden="true" />
@@ -85,12 +85,12 @@ export default function Studio() {
         {/* 02 — Het register */}
         <section className="sw-register">
           <Reveal>
-            <p className="sw-label">Het register — sinds 2010</p>
+            <p className="sw-label">Het register</p>
           </Reveal>
           <Reveal delay={60}>
             <p className="sw-register-claim">
-              Nr. 1 in Europa voor microbeton-vakwerk — van een badkamer van{' '}
-              <em className="sw-oxide">4 m²</em> tot een bedrijfshal van <em className="sw-oxide">4.000</em>.
+              Dé specialist in microbeton &amp; microcement, voor <em className="sw-oxide">wonen én zakelijk</em> — in
+              Nederland, België en Duitsland.
             </p>
           </Reveal>
           <div className="sw-register-rij">
@@ -98,6 +98,27 @@ export default function Studio() {
               <Reveal key={s.label} delay={i * 70} className="sw-register-cel">
                 <TellerRol waarde={s.waarde} suffix={s.suffix ?? ''} />
                 <span className="sw-register-label">{s.label}</span>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* 02b — Waarom microbeton: de zes USP's */}
+        <section className="sw-usps">
+          <div className="sw-sheet-kop">
+            <Reveal>
+              <h2 className="sw-d2">Waarom microbeton.</h2>
+            </Reveal>
+            <Reveal delay={60}>
+              <p className="sw-label">Eén materiaal, zes redenen</p>
+            </Reveal>
+          </div>
+          <div className="sw-usp-grid">
+            {MATERIAAL_USPS.map((u, i) => (
+              <Reveal key={u.kop} delay={i * 50} className="sw-usp">
+                <span className="sw-usp-nr">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="sw-usp-kop">{u.kop}</h3>
+                <p>{u.tekst}</p>
               </Reveal>
             ))}
           </div>
@@ -113,16 +134,20 @@ export default function Studio() {
             </Reveal>
             <Reveal delay={90}>
               <h2 className="sw-d2">
-                Met de hand aangebracht.
-                <br />
-                Dus per definitie <em className="sw-oxide">een origineel</em>.
+                Vakmanschap dat <em className="sw-oxide">generaties</em> meegaat.
               </h2>
             </Reveal>
             <Reveal delay={180}>
               <p className="sw-lede">
-                Een vloer is geen ondergrond — het is het grootste oppervlak in huis. Ruim vijftien jaar dezelfde hand,
-                dezelfde lat, op vloeren van vier tot vierduizend vierkante meter.
+                Geen tegels, geen voegen, geen naden — alleen een doorlopende minerale huid, met de hand opgebouwd in
+                lagen van 2 tot 3 millimeter. Van intieme woningen tot grootschalige commerciële projecten in de Benelux.
               </p>
+            </Reveal>
+            <Reveal delay={260}>
+              <blockquote className="sw-quote">
+                <p>“{STUDIO_QUOTE.tekst}”</p>
+                <cite>{STUDIO_QUOTE.bron}</cite>
+              </blockquote>
             </Reveal>
           </div>
           <div className="sw-naad" aria-hidden="true" />
@@ -336,18 +361,23 @@ export default function Studio() {
           <div className="sw-slot-tekst">
             <Reveal>
               <h2 className="sw-d1 sw-d1--slot">
-                De beste vloer is de vloer
+                Eén oppervlak.
                 <br />
-                die <em className="sw-swell-vast">niemand anders</em> heeft.
+                <em className="sw-swell-vast">Twintig jaar</em> mooi.
               </h2>
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal delay={90}>
+              <p className="sw-slot-trust">
+                Gratis offerte binnen 48 uur · vaste prijs · 2 jaar garantie op de applicatie, 10 jaar op het materiaal.
+              </p>
+            </Reveal>
+            <Reveal delay={150}>
               <div className="sw-slot-acties">
                 <a className="sw-blok-cta sw-blok-cta--vol" href={`mailto:${CONTACT.mail}`}>
-                  Plan een adviesgesprek
+                  Gratis offerte aanvragen
                 </a>
-                <a className="sw-lijn-link sw-lijn-link--licht" href={`https://wa.me/${CONTACT.tel.replace('+', '')}`}>
-                  Of app een foto van je ruimte
+                <a className="sw-lijn-link sw-lijn-link--licht" href={`tel:${CONTACT.tel}`}>
+                  of bel {CONTACT.telLabel}
                 </a>
               </div>
             </Reveal>
@@ -360,7 +390,7 @@ export default function Studio() {
                   <span className="sw-merk-naam sw-merk-naam--voet">
                     Studio<span>Microbeton</span>
                   </span>
-                  <p className="sw-voet-tagline">Het grootste oppervlak in huis. Met de hand.</p>
+                  <p className="sw-voet-tagline">Naadloze oppervlakken met tijdloze uitstraling.</p>
                 </div>
               </div>
 
@@ -392,12 +422,12 @@ export default function Studio() {
               <span className="sw-leader sw-leader--voet">
                 <span className="sw-leader-term">Studio Microbeton</span>
                 <span className="sw-leader-lijn" aria-hidden="true" />
-                <span className="sw-leader-waarde">© 2026 — gesigneerd werk sinds 2010</span>
+                <span className="sw-leader-waarde">© 2026 — 10+ jaar vakmanschap</span>
               </span>
               <span className="sw-leader sw-leader--voet">
                 <span className="sw-leader-term">Werkgebied</span>
                 <span className="sw-leader-lijn" aria-hidden="true" />
-                <span className="sw-leader-waarde">{CONTACT.gebied} · Europa</span>
+                <span className="sw-leader-waarde">{CONTACT.gebied}</span>
               </span>
               <span className="sw-leader sw-leader--voet">
                 <span className="sw-leader-term">Systemen</span>

@@ -118,13 +118,29 @@ export const MATERIALEN = [
   },
 ];
 
-/** Het register — bewijsvoering voor de STUDIO-variant (feiten, geen superlatieven) */
+/** Het register — echte cijfers van studiomicrobeton.nl */
 export const STUDIO_STATS = [
-  { waarde: 15, suffix: '+', label: 'jaar dezelfde hand' },
-  { waarde: 1200, suffix: '+', label: 'vloeren aangebracht' },
-  { waarde: 85000, suffix: '+', label: 'm² opgeleverd' },
-  { waarde: 12, suffix: ' mnd', label: 'vast nazorgmoment' },
+  { waarde: 10, suffix: '+', label: 'jaar ervaring' },
+  { waarde: 500, suffix: '+', label: 'projecten voltooid' },
+  { waarde: 3, suffix: '', label: 'landen — NL · BE · DE' },
+  { waarde: 50, suffix: '+', label: 'kleuren & tinten' },
 ];
+
+/** De zes kern-USP's van microbeton (bron: studiomicrobeton.nl) */
+export const MATERIAAL_USPS = [
+  { kop: 'Naadloos & voegvrij', tekst: 'Eén doorlopend oppervlak zonder naden — hygiënisch, strak en tijdloos.' },
+  { kop: '100% waterdicht', tekst: 'Voor badkamers, keukens en natte ruimtes. Schimmelbestendig.' },
+  { kop: 'Slechts 2–3 mm', tekst: 'Minimale laagdikte — ideaal bij renovatie, geen sloopwerk nodig.' },
+  { kop: 'Op vloerverwarming', tekst: 'Geleidt warmte uitstekend — comfortabel warm op elke ondergrond.' },
+  { kop: '20+ jaar mee', tekst: 'Uitzonderlijk duurzaam en slijtvast — een investering voor generaties.' },
+  { kop: '50+ kleuren', tekst: 'Van warme aardetinten tot koel industrieel grijs — altijd op maat.' },
+];
+
+/** Klant-quote van de site */
+export const STUDIO_QUOTE = {
+  tekst: 'Een oppervlak dat 20+ jaar prachtig blijft — zonder onderhoud.',
+  bron: 'Opdrachtgever · privéwoning',
+};
 
 export const WERKWIJZE = [
   {
@@ -242,9 +258,9 @@ export const FAQ = [
 
 export const CONTACT = {
   mail: 'info@studiomicrobeton.nl',
-  tel: '+31600000000',
-  telLabel: '06 00 00 00 00',
-  gebied: 'heel Nederland & België',
+  tel: '+32474816182',
+  telLabel: '+32 474 81 61 82',
+  gebied: 'Nederland, België & Duitsland',
   straat: 'Achtseweg Zuid 221',
   postcode: '5651 GW',
   stad: 'Eindhoven',

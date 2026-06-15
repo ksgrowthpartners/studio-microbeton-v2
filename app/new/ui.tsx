@@ -389,6 +389,17 @@ const ONTWERPEN = [
 
 export function DesignSwitcher() {
   const pathname = usePathname();
+  // Preview-tool: alleen tonen op test.* en localhost, nooit op het live
+  // productiedomein (www / apex studiomicrobeton.nl).
+  const [toon, setToon] = useState(false);
+  useEffect(() => {
+    const h = window.location.hostname;
+    const productie = h === 'www.studiomicrobeton.nl' || h === 'studiomicrobeton.nl';
+    setToon(!productie);
+  }, []);
+
+  if (!toon) return null;
+
   return (
     <nav className="dsw" aria-label="Ontwerp-varianten">
       <span className="dsw-label">Ontwerp</span>
