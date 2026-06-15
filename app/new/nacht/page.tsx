@@ -21,7 +21,7 @@ export default function Nacht() {
 
       {/* 01 — Hero: ambient film + kolossale wordmark */}
       <section className="nx-hero">
-        <AmbientVideo className="nx-hero-video" src={VIDEOS.hero} poster="/images/hero-poster.jpg" />
+        <AmbientVideo className="nx-hero-video" src={VIDEOS.heroLoop} poster="/images/hero-poster.jpg" />
         <div className="nx-hero-shade" aria-hidden="true" />
         <div className="nx-hero-inhoud">
           <p className="nx-hero-sub">

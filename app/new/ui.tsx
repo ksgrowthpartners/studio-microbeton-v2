@@ -56,6 +56,7 @@ type Beat = { from: number; to: number; kop: string; sub?: string };
 
 export function ScrubHero({
   src,
+  mobileSrc,
   poster,
   beats,
   height = 320,
@@ -63,6 +64,8 @@ export function ScrubHero({
   className = '',
 }: {
   src: string;
+  /** Lichtere afspeel-versie voor de mobiele autoplay-loop (geen scrub op iOS). */
+  mobileSrc?: string;
   poster?: string;
   beats: Beat[];
   /** scrub-lengte in vh */
@@ -92,6 +95,9 @@ export function ScrubHero({
     // autoplay-loop; de tekst-beats blijven scroll-gestuurd.
     const isMobile =
       window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024;
+
+    // Mobiel speelt af (lichte loop-versie); desktop scrubt (dense versie).
+    video.src = isMobile && mobileSrc ? mobileSrc : src;
 
     // Gefaseerd laden: de volledige (keyframe-dichte) film pas ophalen
     // zodra de sectie binnen ~3 viewports komt — ruim op tijd gebufferd,
@@ -177,7 +183,7 @@ export function ScrubHero({
       lader.disconnect();
       poort.disconnect();
     };
-  }, [beats]);
+  }, [beats, src, mobileSrc]);
 
   return (
     <section className={`scrub ${className}`} ref={wrapRef} style={{ height: `${height}vh` }}>
@@ -185,7 +191,6 @@ export function ScrubHero({
         <video
           ref={videoRef}
           className="scrub-video"
-          src={src}
           poster={poster}
           muted
           playsInline

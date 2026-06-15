@@ -4,16 +4,22 @@
  */
 
 export const VIDEOS = {
-  /** Veo 3.1 — macro spaan → badkamer-reveal. Monotone camerabeweging, geschikt voor scrub. */
+  /** Veo 3.1 — macro spaan → badkamer-reveal. Dense (-g 1), voor scrub (atelier). */
   hero: '/videos/new-hero.mp4',
+  /** Lichte loop-versie van de hero (normale GOP + faststart) — voor afspelen, niet scrubben. */
+  heroLoop: '/videos/new-hero-web.mp4',
   /** Seedance 2 — ambient licht-drift over afgewerkte wand. Naadloze loop. */
   loop: '/videos/new-loop.mp4',
   /** Seedance 2 — documentaire spaanslag-vignette, dunne laag. */
   craft: '/videos/new-craft.mp4',
-  /** Take III — gouden-uur troffel → badkuip-reveal. Scrub-encode (-g 1). */
+  /** Take III — gouden-uur troffel → badkuip-reveal. Dense (-g 1) voor desktop-scrub. */
   vakwerk: '/videos/movie-3.mp4',
-  /** Take I — documentaire ambacht, ambient loop. */
+  /** Lichte loop-versie van take III — voor de mobiele afspeel-fallback. */
+  vakwerkLoop: '/videos/movie-3-web.mp4',
+  /** Take I — documentaire ambacht. Dense versie (scrub op /movie-1). */
   ambacht: '/videos/movie-1.mp4',
+  /** Lichte loop-versie van take I — voor de slot-loop. */
+  ambachtLoop: '/videos/movie-1-web.mp4',
 };
 
 export const DIENSTEN = [

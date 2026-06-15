@@ -63,7 +63,7 @@ export default function Studio() {
         {/* 01 — Hero: speelt één keer, houdt het eindbeeld vast */}
         <span id="top" aria-hidden="true" />
         <section className="sw-hero">
-          <PlayOnce className="sw-hero-video" src={VIDEOS.hero} poster="/images/hero-poster.jpg" />
+          <PlayOnce className="sw-hero-video" src={VIDEOS.heroLoop} poster="/images/hero-poster.jpg" />
           <div className="sw-hero-shade" aria-hidden="true" />
           <div className="sw-hero-tekst">
             <h1 className="sw-d1">
@@ -199,6 +199,7 @@ export default function Studio() {
         <ScrubHero
           className="sw-scrub"
           src={VIDEOS.vakwerk}
+          mobileSrc={VIDEOS.vakwerkLoop}
           poster="/images/studio-hero-poster.jpg"
           height={260}
           beats={[
@@ -330,7 +331,7 @@ export default function Studio() {
 
         {/* 10 — Slot */}
         <section className="sw-slot" id="gesprek">
-          <AmbientVideo className="sw-slot-video" src={VIDEOS.ambacht} poster="/images/studio-reveal-poster.jpg" />
+          <AmbientVideo className="sw-slot-video" src={VIDEOS.ambachtLoop} poster="/images/studio-reveal-poster.jpg" />
           <div className="sw-slot-shade" aria-hidden="true" />
           <div className="sw-slot-tekst">
             <Reveal>
