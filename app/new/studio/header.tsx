@@ -69,10 +69,8 @@ export function StudioHeader() {
     <>
       <header className="sw-bar" data-scrolled={scrolled || undefined}>
         <a className="sw-merk" href="#top" aria-label="Studio Microbeton — terug naar boven">
-          <LogoMark className="sw-merk-mark" />
-          <span className="sw-merk-naam">
-            Studio<span>Microbeton</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="sw-merk-logo" src="/logo-official.webp" alt="Studio Microbeton" width={800} height={234} />
         </a>
 
         <nav className="sw-nav" aria-label="Hoofdmenu">
@@ -102,9 +100,8 @@ export function StudioHeader() {
 
       <div className="sw-overlay" data-open={open || undefined} role="dialog" aria-modal="true" aria-label="Menu">
         <div className="sw-overlay-kop">
-          <span className="sw-merk-naam">
-            Studio<span>Microbeton</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="sw-merk-logo" src="/logo-official.webp" alt="Studio Microbeton" width={800} height={234} />
           <button type="button" className="sw-menu-sluit" aria-label="Menu sluiten" onClick={() => setOpen(false)}>
             <span />
             <span />

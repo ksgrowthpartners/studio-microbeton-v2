@@ -3,7 +3,7 @@ import './studio.css';
 import { VIDEOS, MATERIALEN, STUDIO_STATS, MATERIAAL_USPS, STUDIO_QUOTE, CONTACT } from '../content';
 import { Reveal, ScrubHero, AmbientVideo } from '../ui';
 import { MmGauge, TellerRol, PlayOnce } from './bits';
-import { StudioHeader, LogoMark } from './header';
+import { StudioHeader } from './header';
 
 const SITE = 'https://www.studiomicrobeton.nl';
 const SEO_DESCRIPTION =
@@ -486,13 +486,9 @@ export default function Studio() {
           <footer className="sw-voet">
             <div className="sw-voet-top">
               <div className="sw-voet-merk">
-                <LogoMark className="sw-voet-mark" />
-                <div>
-                  <span className="sw-merk-naam sw-merk-naam--voet">
-                    Studio<span>Microbeton</span>
-                  </span>
-                  <p className="sw-voet-tagline">Naadloze oppervlakken met tijdloze uitstraling.</p>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="sw-voet-logo" src="/logo-official.webp" alt="Studio Microbeton" width={800} height={234} />
+                <p className="sw-voet-tagline">Naadloze oppervlakken met tijdloze uitstraling.</p>
               </div>
 
               <address className="sw-voet-blok">
