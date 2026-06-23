@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect x="6" y="6" width="108" height="108" stroke="currentColor" stroke-width="6"/>
-  <g stroke="currentColor" stroke-width="9" stroke-linejoin="miter" stroke-linecap="square">
-    <path d="M28 86 V34 L41 60 L54 34 V86"/>
-    <path d="M64 34 V86"/>
-    <path d="M64 34 H85 V60 H64"/>
-    <path d="M64 60 H89 V86 H64"/>
+  <rect x="7" y="7" width="106" height="106" stroke="#16181a" stroke-width="8"/>
+  <g stroke="#16181a" stroke-width="11" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M32 88 V32 L47 60 L62 32 V88"/>
+    <path d="M62 32 H82 V58 H62"/>
+    <path d="M62 58 H88 V88 H62"/>
   </g>
 </svg>

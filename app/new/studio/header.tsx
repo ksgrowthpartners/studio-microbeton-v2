@@ -3,19 +3,21 @@
 import { useEffect, useRef, useState } from 'react';
 
 /* ------------------------------------------------------------------ */
-/* LogoMark — MB-beeldmerk, vierkant kader, theme-aware (currentColor) */
-/* Wil je het exacte geüploade bestand? Vervang public/logo-mark.svg   */
-/* en deze paden, of laat dit inline component staan.                  */
+/* LogoMark — officieel MB-beeldmerk: M en B delen de middenstam       */
+/* (ligatuur) in een vierkant kader. Theme-aware via currentColor.     */
+/* Canonieke asset: public/logo-mark.svg (zelfde geometrie).           */
 /* ------------------------------------------------------------------ */
 export function LogoMark({ className = '' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 120 120" fill="none" aria-hidden="true" focusable="false">
-      <rect x="6" y="6" width="108" height="108" stroke="currentColor" strokeWidth="6" />
-      <g stroke="currentColor" strokeWidth="9" strokeLinejoin="miter" strokeLinecap="square">
-        <path d="M28 86 V34 L41 60 L54 34 V86" />
-        <path d="M64 34 V86" />
-        <path d="M64 34 H85 V60 H64" />
-        <path d="M64 60 H89 V86 H64" />
+      <rect x="7" y="7" width="106" height="106" stroke="currentColor" strokeWidth="8" />
+      <g stroke="currentColor" strokeWidth="11" strokeLinejoin="miter" strokeLinecap="butt">
+        {/* M + gedeelde middenstam */}
+        <path d="M32 88 V32 L47 60 L62 32 V88" />
+        {/* B — bovenste kom */}
+        <path d="M62 32 H82 V58 H62" />
+        {/* B — onderste kom (iets breder) */}
+        <path d="M62 58 H88 V88 H62" />
       </g>
     </svg>
   );
