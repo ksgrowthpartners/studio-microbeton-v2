@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import './studio.css';
-import { VIDEOS, MATERIALEN, STUDIO_STATS, MATERIAAL_USPS, STUDIO_QUOTE, CONTACT } from '../content';
+import { VIDEOS, MATERIALEN, MATERIAALBRON, STUDIO_STATS, MATERIAAL_USPS, STUDIO_QUOTE, CONTACT } from '../content';
 import { Reveal, ScrubHero, AmbientVideo } from '../ui';
 import { MmGauge, TellerRol, PlayOnce } from './bits';
 import { StudioHeader } from './header';
+import { OfferteForm } from './offerte-form';
 
 const SITE = 'https://www.studiomicrobeton.nl';
 const SEO_DESCRIPTION =
@@ -259,8 +260,11 @@ export default function Studio() {
           <div className="sw-sheet-kop">
             <Reveal>
               <h2 className="sw-d2">
-                Vijf materialen. <em className="sw-oxide">Eén signatuur.</em>
+                Zes materialen. <em className="sw-oxide">Eén signatuur.</em>
               </h2>
+            </Reveal>
+            <Reveal delay={60}>
+              <p className="sw-label">Wonen én zakelijk · klik voor de opbouw</p>
             </Reveal>
           </div>
           <Reveal delay={60}>
@@ -276,7 +280,7 @@ export default function Studio() {
           </Reveal>
           {MATERIALEN.map((m, i) => (
             <Reveal key={m.nr} delay={i * 60}>
-              <a className="sw-rij" href="#gesprek">
+              <a className="sw-rij" href={`/materialen/${m.slug}`}>
                 <span className="sw-rij-nr">{m.nr}</span>
                 <span className="sw-rij-naam">{m.naam}</span>
                 <span className="sw-chip">
@@ -300,9 +304,36 @@ export default function Studio() {
           ))}
           <Reveal delay={120}>
             <p className="sw-sheet-voetnoot">
-              Welke past bij jouw ruimte? Eén adviesgesprek en je weet het — inclusief staal op kleur.
+              Open een materiaal voor de volledige systeemopbouw en toepassingen — of vraag in één adviesgesprek een
+              staal op kleur aan.
             </p>
           </Reveal>
+        </section>
+
+        {/* 04b — Materiaalbron: vaste Nederlandse producent, ~50 jaar */}
+        <section className="sw-bron">
+          <div className="sw-bron-intro">
+            <Reveal>
+              <p className="sw-label">{MATERIAALBRON.label}</p>
+            </Reveal>
+            <Reveal delay={70}>
+              <h2 className="sw-d2">
+                Eén vaste producent. Bijna een halve eeuw <em className="sw-oxide">materiaalkennis</em>.
+              </h2>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="sw-lede">{MATERIAALBRON.lede}</p>
+            </Reveal>
+          </div>
+          <div className="sw-bron-rij">
+            {MATERIAALBRON.punten.map((p, i) => (
+              <Reveal key={p.kop} delay={i * 70} className="sw-bron-cel">
+                <span className="sw-bron-nr">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="sw-bron-kop">{p.kop}</h3>
+                <p>{p.tekst}</p>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         {/* 05 — Kennis, drie regels */}
@@ -460,28 +491,37 @@ export default function Studio() {
           <AmbientVideo className="sw-slot-video" src={VIDEOS.ambachtLoop} poster="/images/studio-reveal-poster.jpg" />
           <div className="sw-slot-shade" aria-hidden="true" />
           <div className="sw-slot-tekst">
-            <Reveal>
-              <h2 className="sw-d1 sw-d1--slot">
-                Eén oppervlak.
-                <br />
-                <em className="sw-swell-vast">Twintig jaar</em> mooi.
-              </h2>
-            </Reveal>
-            <Reveal delay={90}>
-              <p className="sw-slot-trust">
-                Gratis offerte binnen 48 uur · vaste prijs · 2 jaar garantie op de applicatie, 10 jaar op het materiaal.
-              </p>
-            </Reveal>
-            <Reveal delay={150}>
-              <div className="sw-slot-acties">
-                <a className="sw-blok-cta sw-blok-cta--vol" href={`mailto:${CONTACT.mail}`}>
-                  Gratis offerte aanvragen
-                </a>
-                <a className="sw-lijn-link sw-lijn-link--licht" href={`tel:${CONTACT.tel}`}>
-                  of bel {CONTACT.telLabel}
-                </a>
+            <div className="sw-slot-onder">
+              <div className="sw-slot-kol">
+                <Reveal>
+                  <h2 className="sw-d1 sw-d1--slot">
+                    Eén oppervlak.
+                    <br />
+                    <em className="sw-swell-vast">Twintig jaar</em> mooi.
+                  </h2>
+                </Reveal>
+                <Reveal delay={90}>
+                  <p className="sw-slot-trust">
+                    Gratis offerte binnen 48 uur · vaste prijs · 2 jaar garantie op de applicatie, 10 jaar op het
+                    materiaal.
+                  </p>
+                </Reveal>
+                <Reveal delay={150}>
+                  <div className="sw-slot-direct">
+                    <span className="sw-label sw-label--licht">Liever direct?</span>
+                    <a className="sw-lijn-link sw-lijn-link--licht" href={`mailto:${CONTACT.mail}`}>
+                      {CONTACT.mail}
+                    </a>
+                    <a className="sw-lijn-link sw-lijn-link--licht" href={`tel:${CONTACT.tel}`}>
+                      {CONTACT.telLabel}
+                    </a>
+                  </div>
+                </Reveal>
               </div>
-            </Reveal>
+              <div className="sw-slot-form-wrap">
+                <OfferteForm />
+              </div>
+            </div>
           </div>
           <footer className="sw-voet">
             <div className="sw-voet-top">
@@ -530,7 +570,7 @@ export default function Studio() {
               <span className="sw-leader sw-leader--voet">
                 <span className="sw-leader-term">Systemen</span>
                 <span className="sw-leader-lijn" aria-hidden="true" />
-                <span className="sw-leader-waarde">microbeton · microcement · lava · gietvloer · epoxy</span>
+                <span className="sw-leader-waarde">microbeton · microcement · lava · gietvloer · epoxy · pmma</span>
               </span>
               <span className="sw-leader sw-leader--voet">
                 <span className="sw-leader-term">Meting</span>

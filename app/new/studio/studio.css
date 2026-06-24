@@ -930,6 +930,65 @@
   max-width: 56ch;
 }
 
+/* ---------- Materiaalbron (vaste producent, ~50 jaar) ---------- */
+.sw-bron {
+  background: var(--poured-2);
+  border-block: 1px solid var(--lijn);
+  padding: clamp(70px, 11vh, 150px) clamp(24px, 4.5vw, 88px);
+}
+
+.sw-bron-intro {
+  max-width: 62ch;
+  margin-bottom: clamp(40px, 6vh, 70px);
+}
+
+.sw-bron-intro .sw-d2 {
+  margin-top: 20px;
+}
+
+.sw-bron-intro .sw-lede {
+  margin-top: 26px;
+  max-width: 58ch;
+  color: var(--carbon-soft);
+}
+
+.sw-bron-rij {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+}
+
+.sw-bron-cel {
+  border-top: 1px solid var(--lijn-sterk);
+  padding-top: 16px;
+}
+
+.sw-bron-nr {
+  display: block;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--oxide-deep);
+  margin-bottom: 12px;
+}
+
+.sw-bron-kop {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 92;
+  font-weight: 560;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.sw-bron-cel p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--carbon-soft);
+}
+
 /* ---------- Kennis ---------- */
 .sw-kennis {
   padding: 0 clamp(24px, 4.5vw, 88px) clamp(90px, 14vh, 170px);
@@ -1256,6 +1315,222 @@
   border-color: var(--mist);
 }
 
+/* ---------- Slot: tekst + offerteformulier ---------- */
+.sw-slot-onder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: center;
+}
+
+.sw-slot-kol {
+  max-width: 30ch;
+}
+
+.sw-slot-direct {
+  margin-top: clamp(28px, 4vh, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sw-slot-direct .sw-label {
+  margin-bottom: 2px;
+}
+
+/* Formulier */
+.sw-form {
+  border: 1px solid var(--lijn-licht);
+  background: rgba(18, 20, 22, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.sw-form-titel {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 88;
+  font-weight: 600;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.012em;
+  color: #fff;
+  margin-bottom: clamp(20px, 3vh, 28px);
+}
+
+.sw-form-rij {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2vw, 22px);
+  margin-bottom: clamp(14px, 2vh, 20px);
+}
+
+.sw-veld {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: clamp(14px, 2vh, 20px);
+}
+
+.sw-form-rij .sw-veld {
+  margin-bottom: 0;
+}
+
+.sw-veld > span {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(233, 234, 230, 0.62);
+}
+
+.sw-veld input,
+.sw-veld select,
+.sw-veld textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lijn-licht);
+  color: var(--mist);
+  font-family: var(--f-geist), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 9px 2px;
+  transition: border-color 0.2s ease;
+}
+
+.sw-veld textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.sw-veld select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8432a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 22px;
+}
+
+.sw-veld select option {
+  color: #16181a;
+}
+
+.sw-veld input::placeholder,
+.sw-veld textarea::placeholder {
+  color: rgba(233, 234, 230, 0.34);
+}
+
+.sw-veld input:focus,
+.sw-veld select:focus,
+.sw-veld textarea:focus {
+  outline: none;
+  border-bottom-color: var(--oxide);
+}
+
+/* Honeypot — onzichtbaar voor mensen */
+.sw-form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sw-form-actie {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: clamp(20px, 3vh, 28px);
+}
+
+.sw-form .sw-blok-cta--vol:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.sw-form-klein {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgba(233, 234, 230, 0.55);
+}
+
+.sw-form-status {
+  margin-top: 16px;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #e88a72;
+}
+
+/* Succes-staat */
+.sw-form--ok {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sw-form-ok-merk {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e06a4f;
+}
+
+.sw-form-ok-kop {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 82;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.sw-form-ok-tekst {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(233, 234, 230, 0.82);
+  max-width: 42ch;
+}
+
+.sw-form-ok-tekst strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 880px) {
+  .sw-slot-onder {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vh, 48px);
+  }
+
+  .sw-slot-kol {
+    max-width: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .sw-form-rij {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sw-form-rij .sw-veld {
+    margin-bottom: clamp(14px, 2vh, 20px);
+  }
+}
+
 .sw-voet {
   position: relative;
   z-index: 1;
@@ -1455,6 +1730,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .sw-bron-rij {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 28px;
+  }
+
   .sw-split {
     grid-template-columns: 1fr;
   }
@@ -1521,6 +1801,10 @@
   }
 
   .sw-usp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sw-bron-rij {
     grid-template-columns: 1fr;
   }
 

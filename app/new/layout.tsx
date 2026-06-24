@@ -10,7 +10,6 @@ import {
   Geist,
   Martian_Mono,
 } from 'next/font/google';
-import { DesignSwitcher } from './ui';
 import './base.css';
 
 const fraunces = Fraunces({
@@ -79,7 +78,6 @@ export default function NewLayout({ children }: { children: ReactNode }) {
       className={`${fraunces.variable} ${instrument.variable} ${fragment.variable} ${syne.variable} ${cormorant.variable} ${archivo.variable} ${geist.variable} ${martian.variable} new-root`}
     >
       {children}
-      <DesignSwitcher />
     </div>
   );
 }

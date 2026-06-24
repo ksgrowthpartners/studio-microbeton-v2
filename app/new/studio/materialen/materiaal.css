@@ -1,0 +1,566 @@
+/* ============================================================
+   MATERIAAL — detailpagina (/materialen/[slug])
+   Erft de STUDIO-tokens en -klassen (studio.css). Zelfde taal:
+   koel gegoten canvas, Archivo op de breedte-as, oxide als pigment,
+   alleen lagen en haarlijnen — geen radius, geen schaduwen.
+   ============================================================ */
+
+.sw-mat {
+  padding-top: 0;
+}
+
+/* ---------- Slanke, vaste balk ---------- */
+.sw-mat-bar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(12px, 1.8vw, 18px) clamp(20px, 4.5vw, 88px);
+  background: rgba(212, 212, 206, 0.86);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid var(--lijn);
+}
+
+.sw-mat-bar-logo {
+  height: clamp(26px, 3vw, 32px);
+  width: auto;
+  display: block;
+}
+
+.sw-mat-bar-rechts {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+}
+
+.sw-mat-terug {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--carbon-soft);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.sw-mat-terug:hover {
+  color: var(--oxide-deep);
+  gap: 12px;
+}
+
+@media (max-width: 560px) {
+  .sw-mat-bar .sw-bar-cta {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+.sw-mat-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 4vw, 72px);
+  align-items: center;
+  padding: clamp(48px, 8vh, 110px) clamp(24px, 4.5vw, 88px) clamp(56px, 9vh, 120px);
+}
+
+.sw-mat-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--carbon-soft);
+  margin-bottom: clamp(18px, 2.4vh, 26px);
+}
+
+.sw-mat-eyebrow b {
+  font-weight: 500;
+  color: var(--oxide-deep);
+}
+
+.sw-mat-eyebrow i {
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--lijn-sterk);
+  font-style: normal;
+}
+
+.sw-mat-naam {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 75;
+  font-weight: 640;
+  font-size: clamp(2.6rem, 6.4vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+.sw-mat-intro {
+  margin-top: clamp(20px, 3vh, 30px);
+  font-size: clamp(1.05rem, 1.4vw, 1.24rem);
+  line-height: 1.5;
+  max-width: 44ch;
+  color: var(--carbon);
+}
+
+.sw-mat-specs {
+  margin-top: clamp(26px, 4vh, 40px);
+  max-width: 46ch;
+}
+
+.sw-mat-specs .sw-leader {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--lijn);
+}
+
+.sw-mat-specs .sw-leader:first-child {
+  border-top: 1px solid var(--lijn);
+}
+
+.sw-mat-acties {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: clamp(28px, 4vh, 40px);
+}
+
+.sw-mat-beeld {
+  margin: 0;
+  border: 1px solid var(--lijn);
+  overflow: hidden;
+  background: var(--poured-2);
+}
+
+.sw-mat-beeld img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* ---------- Sectie-basis ---------- */
+.sw-mat-sectie {
+  padding: clamp(64px, 11vh, 150px) clamp(24px, 4.5vw, 88px);
+}
+
+.sw-mat-sectie--licht {
+  background: var(--poured-2);
+  border-block: 1px solid var(--lijn);
+}
+
+.sw-mat-sectie-kop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: clamp(34px, 5vh, 56px);
+}
+
+/* ---------- Pluspunten ---------- */
+.sw-mat-plus {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--lijn);
+  border-block: 1px solid var(--lijn);
+}
+
+.sw-mat-plus-cel {
+  background: var(--poured-2);
+  padding: clamp(24px, 3vw, 40px) clamp(22px, 3vw, 40px);
+}
+
+.sw-mat-plus-nr {
+  display: block;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--oxide-deep);
+}
+
+.sw-mat-plus-kop {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 92;
+  font-weight: 560;
+  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin: 12px 0 8px;
+}
+
+.sw-mat-plus-cel p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--carbon-soft);
+  max-width: 34ch;
+}
+
+/* ---------- Systeemopbouw: doorsnede + legenda ---------- */
+.sw-mat-opbouw {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(30px, 5vw, 80px);
+  align-items: start;
+}
+
+.sw-doorsnede {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--lijn-sterk);
+}
+
+.sw-band {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(40px, 6vh, 58px);
+  padding: 0 16px;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(233, 234, 230, 0.92);
+  border-bottom: 1px solid rgba(22, 24, 26, 0.22);
+}
+
+.sw-band:last-child {
+  border-bottom: 0;
+}
+
+/* Bovenste band = finish: oxide-haarlijn als sluitstuk */
+.sw-band--finish {
+  box-shadow: inset 0 2px 0 0 var(--oxide);
+}
+
+/* Onderste band = ondergrond (de plint waarop alles rust) */
+.sw-band--grond {
+  color: var(--carbon-soft);
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(22, 24, 26, 0.12) 0 6px,
+    rgba(22, 24, 26, 0.04) 6px 12px
+  );
+  min-height: clamp(30px, 4vh, 40px);
+}
+
+.sw-band-nr {
+  margin-right: 12px;
+  opacity: 0.6;
+}
+
+.sw-lagen {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sw-laag {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  padding: clamp(14px, 2vh, 20px) 0;
+  border-top: 1px solid var(--lijn);
+}
+
+.sw-laag:last-child {
+  border-bottom: 1px solid var(--lijn);
+}
+
+.sw-laag-nr {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--oxide-deep);
+  padding-top: 4px;
+}
+
+.sw-laag-naam {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 92;
+  font-weight: 560;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.sw-laag p {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--carbon-soft);
+  max-width: 50ch;
+}
+
+/* ---------- Toepassingen (donkere band) ---------- */
+.sw-mat-toepas {
+  background: var(--wet);
+  color: var(--mist);
+  padding: clamp(56px, 9vh, 120px) clamp(24px, 4.5vw, 88px);
+}
+
+.sw-mat-toepas .sw-label {
+  color: rgba(233, 234, 230, 0.66);
+}
+
+.sw-mat-toepas .sw-d2 {
+  color: var(--mist);
+  margin-top: 18px;
+  margin-bottom: clamp(30px, 5vh, 50px);
+}
+
+.sw-mat-toepas .sw-oxide {
+  color: #e06a4f;
+}
+
+.sw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sw-tag {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  border: 1px solid var(--lijn-licht);
+  padding: 11px 16px;
+}
+
+/* ---------- Galerij ---------- */
+.sw-mat-galerij {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.4vw, 36px);
+}
+
+.sw-mat-foto {
+  margin: 0;
+  border: 1px solid var(--lijn);
+  overflow: hidden;
+  background: var(--poured-2);
+}
+
+.sw-mat-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.sw-mat-foto:hover img {
+  transform: scale(1.04);
+}
+
+/* ---------- Andere materialen (kruisverwijzing) ---------- */
+.sw-mat-ander {
+  margin-top: clamp(20px, 3vh, 32px);
+  border-top: 1px solid var(--lijn);
+}
+
+.sw-mat-ander-rij {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: clamp(16px, 2.4vh, 24px) 4px;
+  border-bottom: 1px solid var(--lijn);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  isolation: isolate;
+}
+
+.sw-mat-ander-rij::before {
+  content: '';
+  position: absolute;
+  inset: 0 -16px;
+  z-index: -1;
+  background: var(--poured-2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.sw-mat-ander-rij:hover::before {
+  transform: scaleX(1);
+}
+
+.sw-mat-ander-nr {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.66rem;
+  color: var(--carbon-soft);
+  flex: 0 0 auto;
+}
+
+.sw-mat-ander-naam {
+  font-family: var(--f-archivo), sans-serif;
+  font-variation-settings: 'wdth' 84;
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  transition: font-variation-settings 0.18s ease;
+}
+
+.sw-mat-ander-rij:hover .sw-mat-ander-naam {
+  font-variation-settings: 'wdth' 100;
+}
+
+.sw-mat-ander-toe {
+  font-family: var(--f-martian), monospace;
+  font-size: 0.68rem;
+  color: var(--carbon-soft);
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+.sw-mat-ander-pijl {
+  flex: 0 0 auto;
+  opacity: 0.4;
+  transition: transform 0.24s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.2s ease;
+}
+
+.sw-mat-ander-rij:hover .sw-mat-ander-pijl {
+  transform: translateX(6px);
+  opacity: 1;
+  color: var(--oxide);
+}
+
+/* ---------- Slot-CTA ---------- */
+.sw-mat-slot {
+  background: var(--wet);
+  color: var(--mist);
+  padding: clamp(70px, 12vh, 160px) clamp(24px, 4.5vw, 88px);
+}
+
+.sw-mat-slot .sw-d2 {
+  color: #fff;
+}
+
+.sw-mat-slot .sw-oxide {
+  color: var(--oxide);
+}
+
+.sw-mat-slot-trust {
+  margin-top: 26px;
+  max-width: 52ch;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: rgba(233, 234, 230, 0.8);
+}
+
+.sw-mat-slot-acties {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.sw-mat-slot .sw-blok-cta--vol {
+  background: var(--mist);
+  color: var(--carbon);
+  border-color: var(--mist);
+}
+
+/* ---------- Compacte voet ---------- */
+.sw-mat-voet {
+  background: var(--carbon);
+  color: rgba(233, 234, 230, 0.78);
+  padding: clamp(40px, 6vh, 64px) clamp(24px, 4.5vw, 88px) calc(36px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: var(--f-martian), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.sw-mat-voet a {
+  color: rgba(233, 234, 230, 0.85);
+  text-decoration: none;
+  background: linear-gradient(#e06a4f, #e06a4f) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.24s cubic-bezier(0.76, 0, 0.24, 1), color 0.2s ease;
+}
+
+.sw-mat-voet a:hover {
+  color: #fff;
+  background-size: 100% 1px;
+}
+
+.sw-mat-voet-merk {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sw-mat-voet-logo {
+  height: 30px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* ---------- Responsief ---------- */
+@media (max-width: 900px) {
+  .sw-mat-hero {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vh, 48px);
+  }
+
+  .sw-mat-beeld {
+    order: -1;
+  }
+
+  .sw-mat-beeld img {
+    aspect-ratio: 16 / 11;
+  }
+
+  .sw-mat-plus {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sw-mat-opbouw {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 4vh, 44px);
+  }
+
+  .sw-mat-galerij {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .sw-mat-plus {
+    grid-template-columns: 1fr;
+  }
+
+  .sw-mat-galerij {
+    grid-template-columns: 1fr;
+  }
+
+  .sw-mat-ander-toe {
+    display: none;
+  }
+}

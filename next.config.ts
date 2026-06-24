@@ -4,21 +4,15 @@ const nextConfig: NextConfig = {
   // Slanke productie-output voor Docker/Coolify (één server.js + minimale deps)
   output: 'standalone',
 
-  // Op het productiedomein (www + apex) is de STUDIO-variant de homepage.
-  // Op test.* en localhost blijft de root de bestaande long-scroll homepage.
+  // De STUDIO-variant is de enige actieve site. Op elke host (www, apex,
+  // test en localhost) toont '/' de studio-pagina, zonder de URL te wijzigen.
   async rewrites() {
     return {
       beforeFiles: [
-        {
-          source: '/',
-          has: [{ type: 'host', value: 'www.studiomicrobeton.nl' }],
-          destination: '/new/studio',
-        },
-        {
-          source: '/',
-          has: [{ type: 'host', value: 'studiomicrobeton.nl' }],
-          destination: '/new/studio',
-        },
+        { source: '/', destination: '/new/studio' },
+        // Materiaal-detailpagina's op een nette URL; de route zelf leeft onder
+        // /new/studio/materialen zodat hij de STUDIO-fonts + -CSS erft.
+        { source: '/materialen/:slug', destination: '/new/studio/materialen/:slug' },
       ],
     };
   },

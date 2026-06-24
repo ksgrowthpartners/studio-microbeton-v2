@@ -62,61 +62,318 @@ export const DIENSTEN = [
 ];
 
 /**
- * Materialen-index voor de STUDIO-variant — vlak datasheet-formaat,
- * geen pakketten. Kolommen: dikte / karakter / toepassing.
+ * Materialen-index voor de STUDIO-variant — vlak datasheet-formaat.
+ * De korte velden (dikte/karakter/toepassing/img) voeden het datasheet op
+ * de homepage; de rijke velden (intro/specs/pluspunten/opbouw/galerij)
+ * voeden de detailpagina op /materialen/[slug].
+ *
+ * Bron: studiomicrobeton.nl + de systeembladen/brochures van onze vaste
+ * Nederlandse producent. Productnamen van de fabrikant worden bewust niet
+ * genoemd; de systemen zijn generiek (white-label) omschreven.
  */
 export const MATERIALEN = [
   {
+    slug: 'microbeton',
     nr: '01',
     naam: 'Microbeton',
+    familie: 'Decoratief — wonen & interieur',
     dikte: '2–3 mm',
     karakter: 'Wolkige spaanslag, mat mineraal',
     toepassing: 'Vloer · wand · trap · meubel',
-    tekst:
-      'De signatuur van het huis. Met de hand gespaand in dunne minerale lagen — elke spaanslag blijft zichtbaar, nooit twee keer hetzelfde.',
     img: '/images/services/walls/walls-1-thumb.webp',
+    hero: { src: '/images/services/walls/walls-1.webp', alt: 'Handgespaande microbeton wand met wolkige spaanslag' },
+    intro:
+      'De signatuur van het huis: een doorlopende minerale huid, met de hand opgebouwd in dunne lagen van twee à drie millimeter. Elke spaanslag blijft zichtbaar — geen twee vlakken zijn gelijk.',
+    specs: [
+      { term: 'Laagdikte', waarde: '2–3 mm' },
+      { term: 'Finish', waarde: 'Mat tot zijdemat, geseald' },
+      { term: 'Ondergrond', waarde: 'Tegels · beton · hout · gips' },
+      { term: 'Kleuren', waarde: '50+ tinten, op maat' },
+      { term: 'Beloopbaar', waarde: 'Voorzichtig na 48 uur' },
+    ],
+    pluspunten: [
+      { kop: 'Naadloos & voegvrij', tekst: 'Eén doorlopend oppervlak van vloer naar wand naar trap — zonder een enkele voeg.' },
+      { kop: 'Slechts 2–3 mm', tekst: 'Minimale opbouw, dus ideaal bij renovatie. Geen sloop- of breekwerk nodig.' },
+      { kop: 'Op vloerverwarming', tekst: 'Geleidt warmte uitstekend en blijft stabiel bij temperatuurwisselingen.' },
+      { kop: 'Met de hand gespaand', tekst: 'De tekening ontstaat onder de spaan — een uniek origineel, nooit te kopiëren.' },
+      { kop: '20+ jaar mee', tekst: 'Uitzonderlijk slijtvast bij correct onderhoud. Een investering voor generaties.' },
+      { kop: '50+ kleuren', tekst: 'Van warme aardetinten tot koel industrieel grijs — altijd op maat gemengd.' },
+    ],
+    opbouw: [
+      { naam: 'Hechtprimer', tekst: 'Bereidt de ondergrond voor en zorgt voor blijvende hechting.' },
+      { naam: 'Minerale grondlaag', tekst: 'De basislaag die het reliëf en de vlakheid bepaalt.' },
+      { naam: 'Twee afwerklagen', tekst: 'Met de hand gespaand — hier ontstaat de wolkige tekening.' },
+      { naam: 'Beschermende sealer', tekst: 'Twee transparante lagen die het oppervlak afsluiten en beschermen.' },
+    ],
+    toepassingen: ['Woonvloeren', 'Wanden', 'Trappen', 'Meubel & bladen', 'Vensterbanken'],
+    galerij: [
+      { src: '/images/portfolio/project-8.webp', alt: 'Microbeton accentwand in een slaapkamer' },
+      { src: '/images/collections/signature/signature-1.webp', alt: 'Detail van gespaand microbeton oppervlak' },
+      { src: '/images/services/stairs/stairs-1.webp', alt: 'Naadloze microbeton trap' },
+    ],
+    seo: {
+      title: 'Microbeton — naadloze, handgespaande betonlook | Studio Microbeton',
+      beschrijving:
+        'Microbeton: een naadloze, voegvrije minerale afwerking van 2–3 mm voor vloeren, wanden, trappen en meubel. Met de hand gespaand, op vloerverwarming, 50+ tinten.',
+    },
   },
   {
+    slug: 'microcement',
     nr: '02',
     naam: 'Microcement',
+    familie: 'Decoratief — wonen & interieur',
     dikte: '± 2 mm',
     karakter: 'Zijdemat, 100% waterdicht te sealen',
     toepassing: 'Badkamer · direct over tegels',
-    tekst:
-      'Verfijnder dan echt beton. Twee millimeter over je bestaande tegels of dekvloer — dé badkamerkeuze zonder hak- en breekwerk.',
     img: '/images/services/bathrooms/bathrooms-1-thumb.webp',
+    hero: { src: '/images/services/bathrooms/bathrooms-1.webp', alt: 'Voegvrije microcement badkamer in greige' },
+    intro:
+      'Verfijnder dan beton, even robuust. Twee millimeter direct over je bestaande tegels of dekvloer — dé badkamerkeuze zonder hak- en breekwerk. Wand, vloer en wastafelblad in één doorlopende, waterdichte huid.',
+    specs: [
+      { term: 'Laagdikte', waarde: '± 2 mm' },
+      { term: 'Finish', waarde: 'Zijdemat, waterdicht geseald' },
+      { term: 'Ondergrond', waarde: 'Direct over tegels & dekvloer' },
+      { term: 'Waterdicht', waarde: '100% — schimmelbestendig' },
+      { term: 'Beloopbaar', waarde: 'Voorzichtig na 48 uur' },
+    ],
+    pluspunten: [
+      { kop: '100% waterdicht', tekst: 'Voor douches, badkamers en natte ruimtes. Voegvrij, dus geen schimmel in de naden.' },
+      { kop: 'Over bestaande tegels', tekst: 'Wordt rechtstreeks over je tegels aangebracht — geen sloop, geen puin, geen weken werk.' },
+      { kop: 'Slechts ± 2 mm', tekst: 'Nauwelijks hoogteverschil bij deuren en aansluitingen.' },
+      { kop: 'Hygiënisch & strak', tekst: 'Een poriënarm, doorlopend oppervlak dat eenvoudig schoon te houden is.' },
+      { kop: 'Doorlopend beeld', tekst: 'Wand, vloer en blad in dezelfde kleur en textuur — rustig en tijdloos.' },
+      { kop: 'Op vloerverwarming', tekst: 'Geleidt warmte en blijft stabiel — comfortabel warm onder de voet.' },
+    ],
+    opbouw: [
+      { naam: 'Hechtbrug', tekst: 'Primer die op de bestaande tegels of dekvloer aangrijpt.' },
+      { naam: 'Wapeningslaag', tekst: 'Met glasvlies ingebed, voor een scheurvrije ondergrond.' },
+      { naam: 'Twee afwerklagen', tekst: 'De fijne microcement-lagen die kleur en textuur dragen.' },
+      { naam: 'Waterdichte sealer', tekst: 'Tweecomponenten, in twee lagen — 100% waterbestendig.' },
+    ],
+    toepassingen: ['Badkamers', 'Inloopdouches', 'Keukens', 'Wastafelbladen', 'Toiletten'],
+    galerij: [
+      { src: '/images/portfolio/project-3.webp', alt: 'Microcement badkamer, wand en blad voegvrij' },
+      { src: '/images/services/bathrooms/bathrooms-2.webp', alt: 'Detail van een waterdichte microcement douche' },
+      { src: '/images/collections/pure/pure-1.webp', alt: 'Licht, zijdemat microcement oppervlak' },
+    ],
+    seo: {
+      title: 'Microcement badkamer — 100% waterdicht, over tegels | Studio Microbeton',
+      beschrijving:
+        'Microcement: een waterdichte, voegvrije afwerking van ± 2 mm, rechtstreeks over bestaande tegels. Ideaal voor badkamers en douches — geen sloopwerk, geen schimmel.',
+    },
   },
   {
+    slug: 'microbeton-lava',
     nr: '03',
     naam: 'Microbeton Lava',
+    familie: 'Decoratief — statement',
     dikte: '3–4 mm',
-    karakter: 'Ruw vulkanisch reliëf, voelbaar',
-    toepassing: 'Accentwand · haard · gevel',
-    tekst:
-      'Grover gekorreld, geïnspireerd op vulkanisch gesteente. Voor wanden die je niet alleen ziet, maar ook voelt.',
+    karakter: 'Grof reliëf, oersterk & krasvast',
+    toepassing: 'Accentwand · sterk belaste vloer',
     img: '/images/collections/signature/signature-1-thumb.webp',
+    hero: { src: '/images/collections/signature/signature-1.webp', alt: 'Microbeton Lava wand met grof, vulkanisch reliëf' },
+    intro:
+      'Fijne minerale korrel, gebonden met een epoxyhars: het resultaat is een oersterke, uitzonderlijk krasbestendige laag met een voelbaar, vulkanisch reliëf. Voor vlakken die je niet alleen ziet, maar ook voelt.',
+    specs: [
+      { term: 'Laagdikte', waarde: '3–4 mm' },
+      { term: 'Finish', waarde: 'Mat, krasbestendig (PU-toplaag)' },
+      { term: 'Ondergrond', waarde: 'Beton · cement · anhydriet' },
+      { term: 'Reliëf', waarde: 'Grof, voelbaar' },
+      { term: 'Belasting', waarde: 'Zwaar — vloer & wand' },
+    ],
+    pluspunten: [
+      { kop: 'Oersterk & krasbestendig', tekst: 'De epoxygebonden korrel maakt dit het robuustste systeem in het gamma.' },
+      { kop: 'Voelbaar reliëf', tekst: 'Een ruwe, tactiele textuur die licht vangt en diepte aan een ruimte geeft.' },
+      { kop: 'Matte PU-toplaag', tekst: 'Hoge slijtweerstand en een rustige, matte afwerking als sluitstuk.' },
+      { kop: 'Vrijwel elke ondergrond', tekst: 'Met de juiste egalisatie geschikt op beton, cement én calciumsulfaat.' },
+      { kop: 'Vloer én accentwand', tekst: 'Van zwaar belaste vloeren tot haardpartijen en statementwanden.' },
+      { kop: 'Binnen én buiten', tekst: 'Ook geschikt voor gevels en buitenvlakken — weer- en slijtbestendig.' },
+    ],
+    opbouw: [
+      { naam: 'Universele primer', tekst: 'Hechtlaag, afgestemd op de ondergrond.' },
+      { naam: 'Egaliserende laag', tekst: 'Vlakke basis voor beton- of calciumsulfaatgebonden vloeren.' },
+      { naam: 'Hechtprimer met korrel', tekst: 'De ingestrooide korrel verankert de Lava-basis.' },
+      { naam: 'Grove basislaag', tekst: 'Bepaalt het karakteristieke, grove reliëf.' },
+      { naam: 'Fijne toplaag', tekst: 'Verfijnt de textuur tot de definitieve tekening.' },
+      { naam: 'Matte PU-coating', tekst: 'Beschermt met een hoge slijtweerstand en matte uitstraling.' },
+    ],
+    toepassingen: ['Accentwanden', 'Sterk belaste vloeren', 'Haardpartijen', 'Horeca', 'Gevels'],
+    galerij: [
+      { src: '/images/collections/signature/signature-2.webp', alt: 'Detail van het grove Lava-reliëf' },
+      { src: '/images/portfolio/project-6.webp', alt: 'Minerale gevel met Lava-textuur' },
+      { src: '/images/collections/signature/signature-3.webp', alt: 'Lava-wand bij strijklicht' },
+    ],
+    seo: {
+      title: 'Microbeton Lava — oersterk, krasvast, grof reliëf | Studio Microbeton',
+      beschrijving:
+        'Microbeton Lava: epoxygebonden minerale korrel met een voelbaar, vulkanisch reliëf. Oersterk en krasbestendig met matte PU-toplaag — voor accentwanden en zwaar belaste vloeren.',
+    },
   },
   {
+    slug: 'gietvloer',
     nr: '04',
     naam: 'Gietvloer',
+    familie: 'Decoratief — wonen & interieur',
     dikte: '3–4 mm',
-    karakter: 'Elastisch, warm en stil (PU)',
+    karakter: 'Elastisch, warm, geluiddempend (PU)',
     toepassing: 'Woonruimtes · keukens',
-    tekst:
-      'Licht verend en warm onder blote voeten. Eén vloeiend oppervlak van muur tot muur, ideaal boven vloerverwarming.',
     img: '/images/services/floors/floors-1-thumb.webp',
+    hero: { src: '/images/services/floors/floors-1.webp', alt: 'Naadloze PU-gietvloer in een woonkeuken' },
+    intro:
+      'Eén naadloos, vloeiend oppervlak van muur tot muur. Licht verend en warm onder blote voeten — een polyurethaan-gietvloer dempt geluid en geleidt vloerverwarming moeiteloos.',
+    specs: [
+      { term: 'Laagdikte', waarde: '3–4 mm' },
+      { term: 'Finish', waarde: 'Naadloos, mat tot zijdeglans' },
+      { term: 'Ondergrond', waarde: 'Vlakke dekvloer of beton' },
+      { term: 'Comfort', waarde: 'Verend & geluiddempend' },
+      { term: 'Vloerverwarming', waarde: 'Uitstekend geschikt' },
+    ],
+    pluspunten: [
+      { kop: 'Naadloos van muur tot muur', tekst: 'Eén egaal, doorlopend vlak zonder voegen of overgangen.' },
+      { kop: 'Elastisch & comfortabel', tekst: 'De PU-basis geeft licht mee — aangenaam om op te staan en te lopen.' },
+      { kop: 'Geluiddempend', tekst: 'Demt contactgeluid, een merkbaar verschil in open woonruimtes.' },
+      { kop: 'Warm op vloerverwarming', tekst: 'Geleidt warmte snel en gelijkmatig — comfortabel warm onder de voet.' },
+      { kop: 'Strak en slijtvast', tekst: 'Een egaal beeld dat jarenlang intensief gebruik doorstaat.' },
+      { kop: 'Op maat in kleur', tekst: 'Egaal in vrijwel elke RAL-tint, met een matte tot zijdeglans afwerking.' },
+    ],
+    opbouw: [
+      { naam: 'Primer & uitvlakken', tekst: 'Hechtlaag en het egaliseren van de ondergrond.' },
+      { naam: 'PU-grondlaag', tekst: 'De elastische basis die comfort en demping draagt.' },
+      { naam: 'PU-gietlaag', tekst: 'De gekleurde, vloeiende toplaag — naadloos uitgevloeid.' },
+      { naam: 'Transparante sealer', tekst: 'Beschermende PU-afwerking, mat of zijdeglans.' },
+    ],
+    toepassingen: ['Woonkamers', 'Keukens', 'Slaapkamers', 'Kantoren', 'Winkels'],
+    galerij: [
+      { src: '/images/portfolio/project-1.webp', alt: 'Woonkeuken met naadloze gietvloer' },
+      { src: '/images/services/floors/floors-2.webp', alt: 'Egale PU-gietvloer bij strijklicht' },
+      { src: '/images/collections/balance/balance-1.webp', alt: 'Warme, rustige gietvloer-tint' },
+    ],
+    seo: {
+      title: 'PU-gietvloer — naadloos, warm, geluiddempend | Studio Microbeton',
+      beschrijving:
+        'Gietvloer in polyurethaan: een naadloze, verende en geluiddempende vloer van 3–4 mm, ideaal op vloerverwarming. Voor woonkamers, keukens en kantoren.',
+    },
   },
   {
+    slug: 'epoxy',
     nr: '05',
     naam: 'Epoxy',
+    familie: 'Technisch — zakelijk & industrie',
     dikte: '2–3 mm',
-    karakter: 'Extreem hard, chemisch resistent',
-    toepassing: 'Zakelijk · industrie',
-    tekst:
-      'Strak onder licht en gebouwd voor zwaar gebruik: showrooms, horeca, praktijken en werkplaatsen.',
+    karakter: 'Hard, vloeistofdicht, chemisch resistent',
+    toepassing: 'Magazijn · werkplaats · horeca',
     img: '/images/portfolio/project-7-thumb.webp',
+    hero: { src: '/images/portfolio/project-7.webp', alt: 'Naadloze epoxyvloer in een bedrijfshal' },
+    intro:
+      'Gebouwd voor zwaar gebruik en strak onder fel licht. Een naadloze, vloeistofdichte coating die jaren intensief verkeer doorstaat — desgewenst als snelhardend één-dag-systeem, zodat je bedrijf nauwelijks stilstaat.',
+    specs: [
+      { term: 'Laagdikte', waarde: '2–3 mm' },
+      { term: 'Finish', waarde: 'Mat of zijdeglans · antislip optie' },
+      { term: 'Ondergrond', waarde: 'Beton & cementdekvloer' },
+      { term: 'Kleuren', waarde: 'Alle RAL/NCS · met of zonder vlokken' },
+      { term: 'Beloopbaar', waarde: 'Snelhardend: zelfde dag (EDS)' },
+    ],
+    pluspunten: [
+      { kop: 'Haast onverslijtbaar', tekst: 'Gemaakt voor heftrucks, machines en continu verkeer — jarenlang.' },
+      { kop: 'Vloeistofdicht & naadloos', tekst: 'Een gesloten oppervlak zonder naden, eenvoudig te reinigen.' },
+      { kop: 'Chemisch resistent', tekst: 'Bestand tegen oliën, zuren en de meeste bedrijfschemicaliën.' },
+      { kop: 'Snel beloopbaar', tekst: 'Als één-dag-systeem in een halve dag gebruiksklaar — minimale stilstand.' },
+      { kop: 'Antislip leverbaar', tekst: 'Stroefheid op maat, afgestemd op de werkomgeving.' },
+      { kop: 'Reukloos & kleurvast', tekst: 'Oplosmiddelvrij aan te brengen en kleurvast onder UV.' },
+    ],
+    opbouw: [
+      { naam: 'Hechtprimer', tekst: 'Sluit de betonondergrond af en borgt de hechting.' },
+      { naam: 'Gekleurde basislaag', tekst: 'De dragende coating — met of zonder decoratieve vlokken.' },
+      { naam: 'Transparante toplaag', tekst: 'Eerste beschermlaag over de kleur.' },
+      { naam: 'Tweede toplaag', tekst: 'Sluitlaag in mat of zijdeglans, antislip naar wens.' },
+    ],
+    toepassingen: ['Magazijnen', 'Werkplaatsen', 'Garages', 'Horeca', 'Showrooms', 'Parkeerdekken'],
+    galerij: [
+      { src: '/images/collections/pro/pro-1.webp', alt: 'Strakke industriële epoxyvloer' },
+      { src: '/images/collections/pro/pro-3.webp', alt: 'Epoxy coating met fijne vlokstructuur' },
+      { src: '/images/services/floors/floors-3.webp', alt: 'Egale, vloeistofdichte bedrijfsvloer' },
+    ],
+    seo: {
+      title: 'Epoxyvloer — vloeistofdicht, slijtvast, zakelijk | Studio Microbeton',
+      beschrijving:
+        'Epoxyvloer voor zakelijk en industrie: naadloos, vloeistofdicht en chemisch resistent. Leverbaar als snelhardend één-dag-systeem — magazijnen, werkplaatsen, horeca en showrooms.',
+    },
+  },
+  {
+    slug: 'pmma',
+    nr: '06',
+    naam: 'PMMA-snelvloer',
+    familie: 'Technisch — zakelijk & industrie',
+    dikte: '3–4 mm',
+    karakter: 'Snelhardend, hygiënisch, zwaar belastbaar',
+    toepassing: 'Keukens · labs · voeding',
+    img: '/images/collections/pro/pro-2-thumb.webp',
+    hero: { src: '/images/collections/pro/pro-2.webp', alt: 'Naadloze, hygiënische PMMA-vloer in een productieruimte' },
+    intro:
+      'Als stilstand geen optie is. Een PMMA-vloer hardt in uren uit — zelfs bij vrieskou — en gaat dezelfde dag weer onder zware belasting. Naadloos, hygiënisch en bestand tegen vet, zuur en chemicaliën: vandaar bijna de standaard in de voedingsindustrie.',
+    specs: [
+      { term: 'Laagdikte', waarde: '3–4 mm' },
+      { term: 'Finish', waarde: 'Naadloos · antislip · mat' },
+      { term: 'Ondergrond', waarde: 'Beton — ook bij lage temperatuur' },
+      { term: 'Kleuren', waarde: '30 mixen, of op maat' },
+      { term: 'Beloopbaar', waarde: 'Zelfde dag (één-dag-systeem)' },
+    ],
+    pluspunten: [
+      { kop: 'Korte uithardingstijd', tekst: 'Meerdere lagen op één dag — in korte tijd een complete nieuwe vloer.' },
+      { kop: 'Ook bij vrieskou', tekst: 'Aan te brengen bij extreem lage temperaturen, waar andere systemen stoppen.' },
+      { kop: 'Hygiënisch & poriënvrij', tekst: 'Naadloos en glad — eenvoudig te reinigen, ideaal voor voeding en labs.' },
+      { kop: 'Vet-, zuur- & chemiebestendig', tekst: 'Bestand tegen chemische vervuiling, vet en zuur.' },
+      { kop: 'Snel & zwaar belastbaar', tekst: 'Doorstaat heftrucks en intensief verkeer, vrijwel direct na uitharding.' },
+      { kop: 'Slijtvast & UV-bestendig', tekst: 'Antislip leverbaar en kleurvast, ook bij daglicht.' },
+    ],
+    opbouw: [
+      { naam: 'PMMA-primer', tekst: 'Hecht ook bij lage temperatuur op de betonondergrond.' },
+      { naam: 'Basislaag', tekst: 'PMMA-hars, optioneel met scheuroverbruggend membraan.' },
+      { naam: 'Instrooilaag', tekst: 'Gekleurde kwartsen bepalen kleur, dessin en stroefheid.' },
+      { naam: 'Transparante toplaag', tekst: 'PMMA-sluitlaag, naadloos en antislip naar wens.' },
+    ],
+    toepassingen: ['Bedrijfskeukens', 'Voedingsindustrie', 'Laboratoria', 'Wasstraten', 'Productieruimtes', 'Agrarisch'],
+    galerij: [
+      { src: '/images/portfolio/project-7.webp', alt: 'Zware industrievloer in PMMA' },
+      { src: '/images/collections/pro/pro-1.webp', alt: 'Hygiënische, naadloze PMMA-vloer' },
+      { src: '/images/collections/balance/balance-3.webp', alt: 'Antislip PMMA-afwerking' },
+    ],
+    seo: {
+      title: 'PMMA-vloer — snelhardend, hygiënisch, food-grade | Studio Microbeton',
+      beschrijving:
+        'PMMA-snelvloer: hardt in uren uit, zelfs bij vrieskou. Naadloos, hygiënisch en bestand tegen vet, zuur en chemicaliën — de standaard voor keukens, voeding, labs en wasstraten.',
+    },
   },
 ];
+
+/**
+ * Materiaalbron — onze vaste Nederlandse producent (niet bij naam genoemd).
+ * Marketing-framing rond ~50 jaar bestaan, eigen labs, batch-keuring,
+ * jaarlijkse vaktrainingen en hoogwaardige grondstoffen.
+ */
+export const MATERIAALBRON = {
+  label: 'De herkomst',
+  lede:
+    'Wij leggen niets aan dat we niet door en door vertrouwen. Daarom werken we met één vaste Nederlandse producent — een familiebedrijf dat al bijna een halve eeuw minerale vloer- en wandsystemen ontwikkelt in eigen laboratoria. Elke laag die wij gieten, begint bij hun receptuur.',
+  punten: [
+    {
+      kop: 'Bijna 50 jaar',
+      tekst: 'Een halve eeuw productontwikkeling in eigen laboratoria — continu verfijnd, nooit stilstaand.',
+    },
+    {
+      kop: 'Elke batch gekeurd',
+      tekst: 'De receptuur ligt vast en iedere charge wordt gecontroleerd. Zo blijft de kwaliteit van laag tot laag constant.',
+    },
+    {
+      kop: 'Jaarlijks getraind',
+      tekst: 'Onze applicateurs blijven bijgeschoold op de nieuwste technieken en afwerkingen van de fabrikant.',
+    },
+    {
+      kop: 'In Nederland gemaakt',
+      tekst: 'Minerale systemen op hoogwaardige grondstoffen, getoetst aan strenge kwaliteits- en milieu-eisen.',
+    },
+  ],
+};
 
 /** Het register — echte cijfers van studiomicrobeton.nl */
 export const STUDIO_STATS = [
