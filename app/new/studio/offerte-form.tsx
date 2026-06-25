@@ -74,8 +74,7 @@ export function OfferteForm() {
           Bedankt{naam ? `, ${naam}` : ''}.
         </p>
         <p className="sw-form-ok-tekst">
-          We hebben je aanvraag binnen en nemen <strong>binnen één werkdag</strong> contact met je op — met een
-          eerste advies en, als je wilt, een staal op kleur van jouw ruimte.
+          We hebben je aanvraag binnen en nemen <strong>binnen één werkdag</strong> persoonlijk contact met je op.
         </p>
       </div>
     );

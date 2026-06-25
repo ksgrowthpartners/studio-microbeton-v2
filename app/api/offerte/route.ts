@@ -113,6 +113,7 @@ export async function POST(req: Request) {
       html,
     });
 
+    console.log(`[offerte] verzonden — ${naam}${onderwerp ? ' · ' + onderwerp : ''} → ${to}`);
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error('[offerte] verzendfout', e);
